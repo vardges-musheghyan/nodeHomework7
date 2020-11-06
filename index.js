@@ -36,9 +36,9 @@ async function neededFilePaths(dbVersion) {
         const matched = path.match(regexp);
         let pathVersion = matched && matched[matched.length - 1];
         if (pathVersion) {
-            pathVersion =Number(pathVersion.replace(/^\D+/g, ''));
+            pathVersion = Number(pathVersion.replace(/^\D+/g, ''));
         }
-        return pathVersion > dbVersion
+        return pathVersion > dbVersion  && path.includes('.sql');
     }).sort(function (a, b) {
         let aNotChecked = a;
         let bNotChecked = b;
